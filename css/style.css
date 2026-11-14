@@ -1,33 +1,131 @@
-/* css/style.css —— 初始占位样式
- * 魏斌耀（前端A）将在 feature/ui-layout 分支中完善整个看板的 UI。
- */
+/* =========================================================
+ * feature/ui-layout —— 魏斌耀（前端A）
+ * 用这份完整样式替换 css/style.css 的全部内容
+ * 功能：看板 UI 布局美化 + 任务卡片展示样式
+ * ========================================================= */
 
+/* ---------- 全局 ---------- */
 * { box-sizing: border-box; }
+
+:root {
+  --todo-color: #8e9aaf;
+  --in-progress-color: #f2a541;
+  --done-color: #4caf7d;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
 
 body {
   font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
   margin: 0;
   background: #f4f5f7;
-  color: #333;
+  color: #2f3542;
 }
 
+/* ---------- 顶部栏 ---------- */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 14px 24px;
+  box-shadow: var(--card-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-header h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.btn-primary {
+  background: #4a69bd;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover { background: #3b5299; }
+
+/* ---------- 看板布局 ---------- */
 .board {
   display: flex;
   gap: 16px;
-  padding: 16px;
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: flex-start;
 }
 
 .kanban-column {
   flex: 1;
-  background: #eaecef;
-  border-radius: 8px;
+  background: #e7e9ee;
+  border-radius: 10px;
   padding: 12px;
-  min-height: 300px;
+  min-height: 320px;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 
+.column-title {
+  margin: 4px 4px 12px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.column-title::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--column-accent, #8e9aaf);
+}
+
+.kanban-column[data-column="todo"] { --column-accent: var(--todo-color); }
+.kanban-column[data-column="in-progress"] { --column-accent: var(--in-progress-color); }
+.kanban-column[data-column="done"] { --column-accent: var(--done-color); }
+
+/* ---------- 任务卡片 ---------- */
 .task-card {
   background: #fff;
-  border-radius: 6px;
-  padding: 8px 10px;
-  margin-bottom: 8px;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.task-title {
+  font-size: 14px;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.task-assignee {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #747d8c;
+}
+
+/* 空列提示（可选，把下面注释去掉让空列显示占位文字）
+.task-list:empty::after {
+  content: "暂无任务";
+  display: block;
+  text-align: center;
+  color: #a4b0be;
+  font-size: 12px;
+  padding: 16px 0;
+}
+*/
