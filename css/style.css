@@ -1,0 +1,33 @@
+/* css/style.css —— 初始占位样式
+ * 魏斌耀（前端A）将在 feature/ui-layout 分支中完善整个看板的 UI。
+ */
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  margin: 0;
+  background: #f4f5f7;
+  color: #333;
+}
+
+.board {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.kanban-column {
+  flex: 1;
+  background: #eaecef;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 300px;
+}
+
+.task-card {
+  background: #fff;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+}
