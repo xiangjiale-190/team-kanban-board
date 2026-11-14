@@ -129,3 +129,14 @@ body {
   padding: 16px 0;
 }
 */
+
+/* ---------- 拖拽视觉反馈（feature/drag-move 新增） ---------- */
+.kanban-column.drag-over {
+  outline: 2px dashed #4a69bd;
+  background: #eef1f7;
+}
+
+.task-card.dragging {
+  opacity: .5;
+  transform: rotate(2deg);
+}
