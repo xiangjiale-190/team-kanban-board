@@ -16,6 +16,7 @@ function renderBoard() {
         card.innerHTML = `
           <div class="task-title"></div>
           <div class="task-assignee"></div>
+          <button class="task-delete" title="删除任务">×</button>
         `;
         // 用 textContent 防止 XSS
         card.querySelector('.task-title').textContent = task.title;
